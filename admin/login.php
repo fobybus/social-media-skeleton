@@ -4,13 +4,11 @@ include("../tasks/condb.php");
 $uemail=$_POST["email"];
 $upass=$_POST["password"];
 
-//prevent sql injection 
-$uemail=mysqli_real_escape_string($dbcon,$uemail);
-$upass=mysqli_real_escape_string($dbcon,$upass);
-
-//query on database.
-$query="select * from admin where email='$uemail' and password='$upass'";
-$result=mysqli_query($dbcon,$query);
+// Create a prepared statement to prevent SQL injection
+$stmt = mysqli_prepare($dbcon, "SELECT * FROM admin WHERE email=? AND password=?");
+mysqli_stmt_bind_param($stmt, "ss", $uemail, $upass);
+mysqli_stmt_execute($stmt);
+$result = mysqli_stmt_get_result($stmt);
 
 //check if there is a match 
 if($result->num_rows>0)
