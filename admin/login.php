@@ -4,6 +4,10 @@ include("../tasks/condb.php");
 $uemail=$_POST["email"];
 $upass=$_POST["password"];
 
+//prevent sql injection 
+$uemail=mysqli_real_escape_string($dbcon,$uemail);
+$upass=mysqli_real_escape_string($dbcon,$upass);
+
 //query on database.
 $query="select * from admin where email='$uemail' and password='$upass'";
 $result=mysqli_query($dbcon,$query);
