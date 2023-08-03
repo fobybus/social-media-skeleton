@@ -16,19 +16,24 @@ if($uemail=="" || $upass=="")
   exit();
 }
 require("../../tasks/condb.php");
-$query="insert into admin (email,password) values('$uemail','$upass')";
-$result=$dbcon->query($query);
-      if($result)
-      {
-          echo("<p style='color:green;position:absolute;left:250px;top:70px'> successfully added $uemail</p>");
-         include("add.html");
-          $dbcon->close();
-          exit();
-      }  else {
-        echo("some thing want wrong please try again!");
-        $dbcon->close();
-        include("add.html");
-      }
+
+// Create a prepared statement to prevent SQL injection
+$query = "INSERT INTO admin (email, password) VALUES (?, ?)";
+$stmt = mysqli_prepare($dbcon, $query);
+mysqli_stmt_bind_param($stmt, "ss", $uemail, $upass);
+$result = mysqli_stmt_execute($stmt);
+
+if($result)
+{
+  echo("<p style='color:green;position:absolute;left:250px;top:70px'> successfully added $uemail</p>");
+ include("add.html");
+  $dbcon->close();
+  exit();
+}  else {
+echo("some thing want wrong please try again!");
+$dbcon->close();
+include("add.html");
+}
 
 
 
