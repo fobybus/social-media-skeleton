@@ -36,33 +36,31 @@ if($_SERVER['REQUEST_METHOD'] == 'POST')
 
 	}
 /*************************************************** */
-$id=$_SESSION["aid"];
-$q="select * from admin where admin_id=$id";
-$result=mysqli_query($dbcon,$q);
-$row=$result->fetch_assoc(); 
-$rpass=$row["password"];  //real
+// SQLi prevention through parameterization
+$id = $_SESSION["aid"];
+$q = "SELECT * FROM admin WHERE admin_id=?";
+$stmt = mysqli_prepare($dbcon, $q);
+mysqli_stmt_bind_param($stmt, "i", $id);
+mysqli_stmt_execute($stmt);
+$result = mysqli_stmt_get_result($stmt);
+$row = $result->fetch_assoc(); 
+$rpass = $row["password"];  //real
 
-if($pchanged && $oldpass==$rpass)
-{
-	//chnge the password 
-	$q="update admin set password='$newpass' where admin_id=$id";
-	$result=mysqli_query($dbcon,$q);
-	if($result)
-	{
-		echo "changed the password <br>";
-	}
+if ($pchanged && $oldpass == $rpass) {
+    // change the password 
+    $q = "UPDATE admin SET password=? WHERE admin_id=?";
+    $stmt = mysqli_prepare($dbcon, $q);
+    mysqli_stmt_bind_param($stmt, "si", $newpass, $id);
+    mysqli_stmt_execute($stmt);
+    echo "changed the password <br>";
 }  
 
-if($echanged && $oldpass==$rpass)
-{
-	$q="update admin set email='$newemail' where admin_id=$id";
-	$result=mysqli_query($dbcon,$q);
-	if($result)
-	{
-		echo "changed the email <br>";
-	}
-}
-
+if ($echanged && $oldpass == $rpass) {
+    $q = "UPDATE admin SET email=? WHERE admin_id=?";
+    $stmt = mysqli_prepare($dbcon, $q);
+    mysqli_stmt_bind_param($stmt, "si", $newemail, $id);
+    mysqli_stmt_execute($stmt);
+    echo "changed the email <br>";
 }
 /***************************************************** */
 
