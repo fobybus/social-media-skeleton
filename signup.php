@@ -1,14 +1,14 @@
 <?php
 include("tasks/condb.php");
 //handle the form 
-$uemail=$_POST["email"];
-$upass=$_POST["password"];
-$ufname=$_POST["fname"];
-$ulname=$_POST["lname"];
-$ugender=$_POST['gender'];
-$ubdate=$_POST['bdate'];
-$uelevel=$_POST['elevel'];
-$ucity=$_POST['city'];
+$uemail=htmlspecialchars($_POST["email"], ENT_QUOTES, 'UTF-8');
+$upass=htmlspecialchars($_POST["password"], ENT_QUOTES, 'UTF-8');
+$ufname=htmlspecialchars($_POST["fname"], ENT_QUOTES, 'UTF-8');
+$ulname=htmlspecialchars($_POST["lname"], ENT_QUOTES, 'UTF-8');
+$ugender=htmlspecialchars($_POST['gender'], ENT_QUOTES, 'UTF-8');
+$ubdate=htmlspecialchars($_POST['bdate'], ENT_QUOTES, 'UTF-8');
+$uelevel=htmlspecialchars($_POST['elevel'], ENT_QUOTES, 'UTF-8');
+$ucity=htmlspecialchars($_POST['city'], ENT_QUOTES, 'UTF-8');
 
 //prevent sql injection here 
 $uemail=mysqli_real_escape_string($dbcon,$uemail);

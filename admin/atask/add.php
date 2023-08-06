@@ -6,8 +6,8 @@ if(!isset($_SESSION["aid"]))
 	header("location:adminlogin.html");
    exit();
 }
-$uemail=$_POST["email"];
-$upass=$_POST["password"];
+$uemail=htmlspecialchars($_POST["email"], ENT_QUOTES, 'UTF-8');
+$upass=htmlspecialchars($_POST["password"], ENT_QUOTES, 'UTF-8');
 //if empty password or username!
 //alt isempty
 if($uemail=="" || $upass=="")
