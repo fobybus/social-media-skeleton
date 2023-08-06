@@ -56,9 +56,9 @@ if($_SESSION["gender"]=="male")
 echo "<img src='../image/male.png' class='avatar'>";
 else 
 echo "<img src='../image/female.png' class='avatar'>";
-echo "<h1 class='dashboard_header'>".htmlspecialchars($_SESSION['fname'], ENT_QUOTES, 'UTF-8')." ".htmlspecialchars($_SESSION['lname'], ENT_QUOTES, 'UTF-8')." <br></h1>";
+echo "<h1 class='dashboard_header'>".$_SESSION['fname']." ".$_SESSION['lname']." <br></h1>";
 echo "<p class='profile_text'>birthday : ".$_SESSION['bday']." <br></p>";
-echo "<p class='profile_text'>city : ".htmlspecialchars($_SESSION['city'], ENT_QUOTES, 'UTF-8')." <br></p>";
+echo "<p class='profile_text'>city : ".$_SESSION['city']." <br></p>";
 echo "<p class='profile_text'>gender : ".$_SESSION['gender']." <br></p>";
 echo "<p class='profile_text'>email : ".$_SESSION['email']." <br></p>";
 ?>

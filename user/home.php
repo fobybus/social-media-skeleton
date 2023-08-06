@@ -52,7 +52,7 @@ if(!isset($_SESSION["id"]))
 
 <?php   
 
-echo "<h1 class='dashboard_header'>".htmlspecialchars($_SESSION['fname'], ENT_QUOTES, 'UTF-8')." ".htmlspecialchars($_SESSION['lname'], ENT_QUOTES, 'UTF-8')." </h1>";
+echo "<h1 class='dashboard_header'>".$_SESSION['fname']." ".$_SESSION['lname']." </h1>";
 ?>
 
 </main>

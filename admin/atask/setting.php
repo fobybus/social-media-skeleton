@@ -21,18 +21,18 @@ if($_SERVER['REQUEST_METHOD'] == 'POST')
 	if(isset($_POST['email']))
 	{
 	$echanged=true;
-	$newemail=$_POST['email'];
+	$newemail=htmlspecialchars($_POST['email'], ENT_QUOTES, 'UTF-8');
 	} 
 	//is pass ^^
 	if(isset($_POST['password']))
 	{
 	$pchanged=true;
-	$newpass=$_POST['password'];
+	$newpass=htmlspecialchars($_POST['password'], ENT_QUOTES, 'UTF-8');
 	} 
 	if(isset($_POST['oldpass']))
 	{
 		$putold=true;
-		$oldpass=$_POST['oldpass'];
+		$oldpass=htmlspecialchars($_POST['oldpass'], ENT_QUOTES, 'UTF-8');
 
 	}
 /*************************************************** */
