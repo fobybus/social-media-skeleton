@@ -19,16 +19,7 @@ $result=mysqli_query($dbcon,$query);
 if($result->num_rows>0)
 {
   
-  //update last seen
-  //prepare http request that sent to update last seen 
-  //because can't send the request using include with parameter 
-  ////////////////////////////
-  $chandler=curl_init();
-  $url=$_SERVER['SERVER_NAME']."/test/socialmedia/tasks/updatels.php?email=$uemail";
-  curl_setopt($chandler,CURLOPT_URL,$url);
-  //don't fetch the response 
-  curl_setopt($chandler,CURLOPT_RETURNTRANSFER,0);
-  curl_exec($chandler);
+  
   //fetch  id to store to 
   $row=$result->fetch_assoc();
   $id=$row["id"];
@@ -55,7 +46,19 @@ if($result->num_rows>0)
   $_SESSION["edu"]=$edu;
   $_SESSION["joined"]=$joined;
   ////////////////////////////
-  
+
+  //update last seen
+  ////////////////////////////
+  $sessionID =   session_id();
+  session_write_close();
+
+  $chandler=curl_init();
+  $url=$_SERVER['SERVER_NAME']."/social-media-skeleton/tasks/updatels.php?email=$uemail";
+  curl_setopt($chandler,CURLOPT_URL,$url);
+  curl_setopt($chandler, CURLOPT_HTTPHEADER, array("Cookie:".'PHPSESSID=' . $sessionID));
+  curl_setopt($chandler,CURLOPT_RETURNTRANSFER,false);
+  curl_exec($chandler);
+  curl_close($chandler);
 
 $dbcon->close();
   header("location:user/home.php");

@@ -1,7 +1,16 @@
 <?php 
 require('condb.php');
+//prevent unauthorized access 
+session_start();
+if(!isset($_SESSION["id"]))
+{
+	die("invalid request!!!");
+}
 
 $postedemail = $_GET['email'];
+$owner_email=$_SESSION['email'];
+if($owner_email!=$postedemail)
+die("forbidden action!!!");
 
 // Get id from the url sent to this page 
 $search = "SELECT * FROM users WHERE email=?";
@@ -16,6 +25,7 @@ if ($result) {
 } else {
     // echo("can't parse id");
     // echo mysqli_error($dbcon);
+     die();
 }
 
 // Find id 

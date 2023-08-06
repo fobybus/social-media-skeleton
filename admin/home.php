@@ -50,9 +50,11 @@ session_start();
 <p class="infos"><?php echo "today's total message transferred over pipa=====>> ".$todaysm?></p>
 <p class="isum"> <?php echo "website usability=====>> ".(($active_today/$total_users)*100).'%'?> </p>	
 <!-- insert the animations-->
-<div class="pipaAnim"><img src="../image/pipa_anime.png"></div>
-<div class="pipacon"><img src="../image/connect.png"></div>
+<div class="pipaAnim"><img src="../image/pipa_anime.png">
+<img src="../image/connect.png" class="pipacon">
 <div class="pedscreen"><p>friendly<br> pipa go</p></div>
+</div>
+
 
 	</main>
 	<!--footer content-->

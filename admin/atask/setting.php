@@ -3,7 +3,7 @@
 session_start();
 if(!isset($_SESSION["aid"]))
 {
-	header("location:adminlogin.html");
+	header("location:../adminlogin.html");
    exit();
 }
 //connect to the database first!!!!
@@ -63,7 +63,7 @@ if ($echanged && $oldpass == $rpass) {
     echo "changed the email <br>";
 }
 /***************************************************** */
-
+}
 ?> 
 
 <html lang="en-us">

@@ -56,8 +56,6 @@ li a:hover {
 .footer {
     font-weight: bolder;
     font-size: large;
-    position: absolute;
-    top: 90%;
     width: 100%;
     height: fit-content;
 }

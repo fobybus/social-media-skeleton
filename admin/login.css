@@ -15,7 +15,6 @@ body {
 
 }
 
-
 ul {
     list-style-type: none;
     margin: 0;
@@ -40,17 +39,12 @@ li a:hover {
     background-color: #111111;
 }
 
-
 .loginbox {
     /* background-color: cyan;*/
-
-    background-repeat: no-repeat;
-    width: 30%;
-    height: 50%;
-    margin-top: 150px;
-    margin-left: 300px;
-    position: absolute;
-    left: 20%;
+    
+    margin-top: 15px;
+    margin-left: 30px;
+   
 
 }
 
@@ -58,9 +52,7 @@ li a:hover {
 #field1 {
     background-color: rgba(0, 0, 0, 40%);
     color: white;
-    width: 80%;
-    height: 80%;
-    margin-left: 35px;
+    margin-left: 2px;
     font-weight: bolder;
 
 
@@ -86,10 +78,6 @@ legend {
 }
 
 .footer {
-
-    position: absolute;
-    top: 90%;
-    width: 100%;
     height: fit-content;
     font-weight: bolder;
     font-size: large;

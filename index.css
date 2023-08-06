@@ -15,29 +15,20 @@ div.innerbox {
 	width: 85%;
 	border: 3px solid blue;
 	height: 85%;
-	position: absolute;
-	left: 10%;
-	top: 10%;
 	border-radius: 20%;
 	background-image: url(image/peepa.png);
 	background-repeat: repeat-x;
 	background-size: 80% 80%;
+	overflow: auto;
 	z-index: 1;
 }
 
 .buttonbox {
 	background-color: rgba(0, 0, 0, 90%);
 	color: white;
-	width: 50;
+	margin: 30px;
 	border: 1px solid black;
-	height: 50%;
-	width: 50%;
-	position: absolute;
-	left: 25%;
-	top: 25%;
 	border-radius: 5%;
-	z-index: 2;
-
 }
 
 

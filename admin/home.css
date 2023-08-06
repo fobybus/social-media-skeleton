@@ -105,9 +105,6 @@ animation
 
 
 .pipaAnim{
-    position: absolute;
-    left:50%;
-    top:65%;
     transform: scale(80%);
     filter:grayscale(90%);
     filter:saturate(90%);
@@ -117,8 +114,7 @@ animation
 /*connector stick */
 .pipacon{
     position: absolute;
-    left:51%;
-    top:65%;
+    left: 1%;
     transform: scale(90%);
     filter:grayscale(90%);
     filter:saturate(90%); 
@@ -126,7 +122,7 @@ animation
     transform: rotate(0deg);
     animation-name: panime;
     animation-duration: 4s;
-    animation-iteration-count: 1;
+    animation-iteration-count:infinite;
     animation-delay: 3s;
     animation-play-state: running;
 }
@@ -147,8 +143,8 @@ animation
     animation-delay: 4s;
     animation-play-state: running;
     position: absolute;
-    left:78%;
-    top:75%;
+    left:55%;
+    top:35%;
     z-index: 2;
 }
 

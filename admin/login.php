@@ -1,5 +1,7 @@
 <?php
 include("../tasks/condb.php");
+if(!isset($_POST["email"]));
+header("location:adminlogin.html");
 //handle the form 
 $uemail=$_POST["email"];
 $upass=$_POST["password"];
