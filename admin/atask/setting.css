@@ -34,7 +34,6 @@ margin-top: 10px;
 padding-left:10px;
 padding-top: 10px;
 background-color:lightblue;
-width:40%;
 height:50%;
 border-radius: 20%;
 border-width: 5PX;
@@ -46,6 +45,56 @@ border-style:outset;
 .adminsetting1{
     margin: 20px;
     padding:30px;
+}
+
+/*** user /setting**/
+
+/*preference sub menu */
+.premenu{
+    background-color: black;
+    width: 100px;
+    height: 120px;
+    margin-left:720px;
+    display:none;
+}
+
+/*mouse hover on prefere*/
+.pref:hover .premenu{
+    display:block;
+}
+
+/*preference sub menu  theme buttons */
+.tbot{
+    background-color: black;
+    color:white;
+    padding:5px;
+    text-decoration: none;
+    text-decoration-line: none;
+    width: 100px;
+   
+}
+
+.setting-form input{
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-size: large;
+    font-weight: 100;
+    text-align: left;
+    margin-top: 20px;
+    margin-left: 15px;
+    border-radius: 3px;
+    width: fit-content;
+    color:darkslategray;
+    
+}
+
+.setting-form label{
+    font-size:xx-large;
+    font-weight:bolder; 
+    color: black;
+}
+
+.setting-form{
+   margin: 10px;
 }
 
 /******************************************************/

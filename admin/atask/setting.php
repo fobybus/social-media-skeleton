@@ -33,7 +33,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST')
 	{
 		$putold=true;
 		$oldpass=htmlspecialchars($_POST['oldpass'], ENT_QUOTES, 'UTF-8');
-
+		
 	}
 /*************************************************** */
 // SQLi prevention through parameterization

@@ -28,4 +28,4 @@
 - user/*.css
   
  ### feature added 
- - added adminlogin link to login navigation bar  
+ added adminlogin link to login navigation bar  

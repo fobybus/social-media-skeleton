@@ -34,7 +34,7 @@ if(!isset($_SESSION["id"]))
 				<li><a href="#">search </a></li>
 				<li><a href="#"> message </a></li>
 				<li><a href="#">notification </a></li>
-				<li><a href="#">setting</a></li>
+				<li><a href="setting.php">setting</a></li>
 				<li><a href="logout.php">logout</a></li>
 				<div class="pref"> 
 				<li><a href="#">preference </a></li>

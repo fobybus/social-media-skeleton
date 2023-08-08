@@ -20,4 +20,13 @@ function cyan_theme()
   
 }
 
+//fill 
+function fill(fname,lname,email,city)
+{
+    document.getElementById("fname").setAttribute("value",fname);
+    document.getElementById("lname").setAttribute("value",lname);
+    document.getElementById("email").setAttribute("value",email);
+    document.getElementById("city").setAttribute("value",city);
+}
+
 

@@ -1,0 +1,75 @@
+<html lang="en-us">
+
+<head>
+	<title> setting  </title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width,intial-scale=1.0">
+	<meta name="keywords"
+		content="social media,the best social media platform,chat with your friend ,easy social media,pipago">
+	<meta name="description" content="light weight secured student's social media!!!">
+	<meta name="author" content="black eagle team">
+	<link rel="stylesheet" href="../admin/atask/setting.css">
+	<script src="home.js"></script>
+</head>
+<!-- body goes here -->
+
+<body id="body">
+	<!--header-->
+	<header>
+		<!-- -navigation links-->
+		<nav>
+			
+			<ul>
+				<li><a href="home.php">home</a></li>
+				<li><a href="profile.php">profile </a></li>
+				<li><a href="#">search </a></li>
+				<li><a href="#"> message </a></li>
+				<li><a href="#">notification </a></li>
+				<li><a href="#"  style="background-color: black;">setting</a></li>
+				<li><a href="logout.php">logout</a></li>
+				<div class="pref"> 
+				<li><a href="#">preference </a></li>
+				<div class="premenu" id="premenu">
+				<input class="tbot" type="button" value="night mode" onclick="gonight()">
+				<input class="tbot" type="button" value="cyan" onclick="cyan_theme()">
+				<input class="tbot" type="button" value="reset" onclick="reset_theme()">
+				</div>
+				</div>
+			</ul>
+		</nav>
+
+	</header>
+	<!-- content-->
+	<main>
+    <div class="setting-form">
+	<form action="setting.php" method="post" enctype="multipart/form-data">
+		<label for="email">Your Email</label><input type="email" name="email" id="email" required> <br>
+		<label for="fname">First Name</label><input type="name" name="fname" id="fname" required><br>
+		<label for="lname">Last Name</label><input type="name" name="lname" id="lname" required><br>
+		<label for="city">City Name</label><input type="text" name="city" id="city" required><br>
+		<input type="hidden" name="ch-info"><br>
+		<input type="submit" value="save changes">
+	</form>
+	</div>
+
+	
+	<div class="setting-form">
+		<form action="setting.php" method="post" enctype="multipart/form-data">
+			<label for="oldpass">Old Password</label><input type="password" name="oldpass" id="oldpass" required> <br>
+			<label for="newpass">New Password</label><input type="password" name="newpass" id="newpass" required><br>
+			<label for="cpass">confirm Passw</label><input type="password" name="cpass" id="cpass" required><br>
+			<input type="hidden" name="ch-pass"><br>
+			<input type="submit" value="Change password">
+		</form>
+	</div>
+    
+	</main>
+	<!--footer content-->
+	<footer>
+		<hr>
+       &copy; 2023 join black eagle!!
+
+	</footer>
+</body>
+
+</html>
