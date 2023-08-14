@@ -32,7 +32,7 @@ USE `pipago`;
 CREATE TABLE `admin` (
   `admin_id` int(11) NOT NULL,
   `email` varchar(50) NOT NULL,
-  `password` varchar(50) NOT NULL
+  `password` varchar(64) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -145,7 +145,7 @@ CREATE TABLE `users` (
   `bday` date NOT NULL,
   `city` varchar(50) NOT NULL,
   `email` varchar(50) NOT NULL COMMENT 'email',
-  `password` varchar(50) NOT NULL COMMENT 'pass',
+  `password` varchar(64) NOT NULL COMMENT 'pass',
   `gender` varchar(6) NOT NULL,
   `edu` varchar(30) NOT NULL,
   `last_seen` datetime NOT NULL,
