@@ -1,5 +1,6 @@
 <?php
 require("../tasks/condb.php");
+require("../tasks/passw.php");
 session_start();
 if(!isset($_SESSION["id"]))
 {
@@ -15,6 +16,20 @@ if(isset($_POST["ch-info"]))
    $email=htmlspecialchars($_POST["email"],ENT_QUOTES,"UTF-8");
    $city=htmlspecialchars($_POST["city"],ENT_QUOTES,"UTF-8");
    $id=$_SESSION["id"];
+   
+    //check token 
+    if(isset($_SESSION["c-token"]) && isset($_POST["csrf-token"]))
+    {
+      $tok=$_POST["csrf-token"];
+      if($_SESSION["c-token"]!=$tok)
+      {
+        exit("action denied!");
+      }
+    } else {
+        exit("action denied!");
+    }
+   
+    
    //no validation from server side 
    $query="update users set fname=?,lname=?,email=?,city=? where id=?";
    $st=$dbcon->prepare($query);
@@ -52,6 +67,8 @@ $ln=$_SESSION["lname"];
 $email=$_SESSION["email"];
 $city=$_SESSION["city"];
 echo "<script> fill('$fn','$ln','$email','$city')</script>";
+$tok=$_SESSION["c-token"]=generateSalt();
+echo "<script>setToken('$tok')</script>";
 $dbcon->close();
 
 ?>

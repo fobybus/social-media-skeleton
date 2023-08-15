@@ -32,7 +32,7 @@ session_start();
 			<ul>
 				<li><a href="#" style="background-color: black;">pipa analytics</a></li>
 				<li><a href="mg.php">manage user </a></li>
-				<li><a href="atask/add.html"> add admin </a></li>
+				<li><a href="atask/add.php"> add admin </a></li>
 				<li><a href="atask/setting.php">setting</a></li>
 				<li><a href="atask/logout.php">logout</a></li>
 			</ul>

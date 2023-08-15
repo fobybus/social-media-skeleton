@@ -1,6 +1,6 @@
 <?php
 include("../tasks/condb.php");
-if(!isset($_POST["email"]));
+if(!isset($_POST["email"]))
 header("location:adminlogin.html");
 //handle the form 
 $uemail=$_POST["email"];
@@ -19,15 +19,13 @@ if($result->num_rows>0)
   $id=$rows["admin_id"];
   session_start();
   $_SESSION["aid"]=$id;
-  $dbcon->close();
+  $_SESSION["password"]=$rows["password"];
  header("location:home.php");
-    exit;
 }  else {
-  $dbcon->close();
-    echo "<p style='color:red;text-align:center;font-size:20px;position: absolute;left:700px;top:250px;'> incorrect password or email  </p>";
+    echo "<p style='color:red;text-align:center;font-size:20px;'> incorrect password or email  </p>";
    require('adminlogin.html');
-    exit();
 }
+$dbcon->close();
 
 ?>
 

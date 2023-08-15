@@ -37,7 +37,7 @@ if(!isset($_SESSION["aid"]))
             <ul>
                 <li><a href="home.php">pipa analytics</a></li>
                 <li><a href="#" style="background-color: black;">manage user </a></li>
-                <li><a href="atask/add.html"> add admin </a></li>
+                <li><a href="atask/add.php"> add admin </a></li>
                 <li><a href="atask/setting.php">setting</a></li>
                 <li><a href="atask/logout.php">logout</a></li>
             </ul>

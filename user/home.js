@@ -29,4 +29,10 @@ function fill(fname,lname,email,city)
     document.getElementById("city").setAttribute("value",city);
 }
 
+//set token 
+function setToken(token)
+{
+  document.getElementById("csrf-token").setAttribute("value",token);
+}
+
 

@@ -65,7 +65,7 @@ $dbcon->close();
     exit;
 }  else {
   $dbcon->close();
-    echo "<p style='color:red;text-align:center;font-size:20px;position: absolute;left:700px;top:250px;'> incorrect password or email  </p>";
+    echo "<p style='color:red;text-align:center;font-size:20px;'> incorrect password or email  </p>";
    require('login.html');
     exit();
 }
