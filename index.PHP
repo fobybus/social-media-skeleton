@@ -1,9 +1,23 @@
+<?php
+session_start();
+if(isset($_SESSION["id"]))
+{
+	header("location:user/home.php");
+}
+
+ if(isset($_SESSION["aid"]))
+ {
+	 header("location:admin/home.php");
+	
+ }
+?>
+
 <html lang="en-us">
 
 <head>
 	<title> welcome to pipago </title>
 	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width,intial-scale=1.0">
+	<meta name="viewport" content="width=device-width,initial-scale=1.0">
 	<meta name="keywords"
 		content="social media,the best social media platform,chat with your friend ,easy social media,pipago">
 	<meta name="description" content="light weight secured sudent's social media!!!">

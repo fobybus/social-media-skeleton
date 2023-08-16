@@ -14,7 +14,7 @@ session_start();
 <head>
 	<title> admin homepage </title>
 	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width,intial-scale=1.0">
+	<meta name="viewport" content="width=device-width,initial-scale=1.0">
 	<meta name="keywords"
 		content="social media,the best social media platform,chat with your friend ,easy social media,pipago">
 	<meta name="description" content="light weight secured student's social media!!!">
