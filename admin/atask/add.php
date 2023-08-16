@@ -33,17 +33,46 @@ if($_SERVER['REQUEST_METHOD'] == 'POST')
     exit();
   }
   require("../../tasks/condb.php");
-  
+
+  //prepare 
+  $salt=generateSalt();
+  $upass=hashPass($upass,$salt);
   // Create a prepared statement to prevent SQL injection
   $query = "INSERT INTO admin (email, password) VALUES (?, ?)";
   $stmt = mysqli_prepare($dbcon, $query);
   mysqli_stmt_bind_param($stmt, "ss", $uemail, $upass);
   $result = mysqli_stmt_execute($stmt);
-  
+  mysqli_stmt_close($stmt);
   if($result)
   {
-    echo("<p style='color:green;position:absolute;left:250px;top:70px'> successfully added $uemail</p>");
-    $dbcon->close();
+    //GET Id 
+    $query="select admin_id from admin where email=?";
+    $stmt = mysqli_prepare($dbcon, $query);
+    mysqli_stmt_bind_param($stmt, "s", $uemail);
+    mysqli_stmt_execute($stmt);
+    $result = mysqli_stmt_get_result($stmt);
+    if($result->num_rows!=0)
+    {
+      $row=$result->fetch_assoc();
+      $id=$row["admin_id"];
+      $query="INSERT INTO adminsalt (aid,salt) VALUES (?,?)";
+      $stmt = mysqli_prepare($dbcon, $query);
+      mysqli_stmt_bind_param($stmt, "ss", $id,$salt);
+      if(mysqli_stmt_execute($stmt))
+      {
+
+        echo("<p style='color:green;position:absolute;left:250px;top:70px'> successfully added $uemail</p>");
+        $dbcon->close();
+      } else {
+        echo("<p style='color:green;position:absolute;left:250px;top:70px'> error occured</p>");
+      }
+
+    
+    } else {
+      echo("<p style='color:green;position:absolute;left:250px;top:70px'>error occured while registering admin  </p>");
+    }
+
+   
   }  else {
   echo("some thing want wrong please try again!");
   $dbcon->close();

@@ -1,26 +1,26 @@
 <?php
+session_start();
+if(isset($_SESSION["id"]))
+{
+	header("location:user/home.php");
+}
 
-use LDAP\Result;
-
-include("tasks/condb.php");
+require("tasks/condb.php");
+require("tasks/passw.php");
 //handle the form 
 $uemail=$_POST["email"];
 $upass=$_POST["password"];
 
 //prevent sql injection 
 $uemail=mysqli_real_escape_string($dbcon,$uemail);
-$upass=mysqli_real_escape_string($dbcon,$upass);
 
 //query on database.
-$query="select * from users where email='$uemail' and password='$upass'";
+$query="select * from users left join usersalt on users.id=usersalt.uid where email='$uemail'";
 $result=mysqli_query($dbcon,$query);
-
 //check if there is a match 
 if($result->num_rows>0)
 {
-  
-  
-  //fetch  id to store to 
+  //fetch  some data
   $row=$result->fetch_assoc();
   $id=$row["id"];
   $lname=$row['lname'];
@@ -32,9 +32,13 @@ if($result->num_rows>0)
   $pas=$row["password"];
   $edu=$row["edu"];
   $joined=$row["joined"];
-  
-  //session start
-  session_start();
+  $salt=$row["salt"];
+
+  //checking 
+  $upass=hashPass($upass,$salt);
+  if($upass==$pas)
+  {
+      //session start
   $_SESSION['email']=$email;
   $_SESSION["id"]=$id;
   $_SESSION["fname"]=$fname;
@@ -45,13 +49,12 @@ if($result->num_rows>0)
   $_SESSION["password"]=$pas;
   $_SESSION["edu"]=$edu;
   $_SESSION["joined"]=$joined;
+  $_SESSION["salt"]=$salt;
   ////////////////////////////
-
   //update last seen
   ////////////////////////////
   $sessionID =   session_id();
   session_write_close();
-
   $chandler=curl_init();
   $url=$_SERVER['SERVER_NAME']."/social-media-skeleton/tasks/updatels.php?email=$uemail";
   curl_setopt($chandler,CURLOPT_URL,$url);
@@ -59,17 +62,17 @@ if($result->num_rows>0)
   curl_setopt($chandler,CURLOPT_RETURNTRANSFER,false);
   curl_exec($chandler);
   curl_close($chandler);
-
-$dbcon->close();
   header("location:user/home.php");
-    exit;
+  } else {
+    echo "<p style='color:red;text-align:center;font-size:20px;'> Incorrect Attempt! </p>";
+    require('login.html');
+  }
+  
 }  else {
-  $dbcon->close();
-    echo "<p style='color:red;text-align:center;font-size:20px;'> incorrect password or email  </p>";
+    echo "<p style='color:red;text-align:center;font-size:20px;'> Email doesn't exist </p>";
    require('login.html');
-    exit();
 }
-
+$dbcon->close();
 ?>
 
 

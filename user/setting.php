@@ -46,15 +46,18 @@ if(isset($_POST["ch-info"]))
 
 if(isset($_POST["ch-pass"]))
 {
- if($_POST['oldpass']==$_SESSION["password"] && $_POST["newpass"]==$_POST["cpass"] && $_POST["oldpass"]!=$_POST["newpass"])
+  $cpass=hashPass($_POST["cpass"],$_SESSION["salt"]);
+  $newpass=hashPass($_POST["newpass"],$_SESSION["salt"]);
+  $oldpass=hashPass($_POST["oldpass"],$_SESSION["salt"]);
+ if($oldpass==$_SESSION["password"] && $newpass==$cpass && $oldpass!=$newpass)
  {
  //hange 
 $id=$_SESSION["id"];
 $query="update users set password=? where id=$id";
 $st=$dbcon->prepare($query);
-$st->bind_param("s",$_POST["newpass"]);
+$st->bind_param("s",$newpass);
 $st->execute();
-$_SESSION["password"]=$_POST["newpass"];
+$_SESSION["password"]=$newpass;
 echo "password changed successfully!";
 } else {
   echo "something want wrong. please try again!";

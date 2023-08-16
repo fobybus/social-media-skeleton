@@ -1,6 +1,7 @@
 <!-- drop in and out of the PHP context -->
 <?php  
 session_start();
+require("../../tasks/passw.php");
 if(!isset($_SESSION["aid"]))
 {
 	header("location:../adminlogin.html");
@@ -28,12 +29,13 @@ if($_SERVER['REQUEST_METHOD'] == 'POST')
 	{
 	$pchanged=true;
 	$newpass=$_POST['password'];
+	$newpass=hashPass($newpass,$_SESSION["salt"]);
 	} 
 	if(isset($_POST['oldpass']) && $_POST['oldpass']!="")
 	{
 		$putold=true;
 		$oldpass=$_POST['oldpass'];
-		
+		$oldpass=hashPass($oldpass,$_SESSION["salt"]);
 	}
 /*************************************************** */
 $id=$_SESSION["aid"];

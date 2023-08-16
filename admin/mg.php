@@ -1,11 +1,3 @@
-<!-- drop in and out of the PHP context -->
-<!--
-<?php 
-//switching to the html
-?> 
-
--->
-
 <?php
 session_start();
 if(!isset($_SESSION["aid"]))
