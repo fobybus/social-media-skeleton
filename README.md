@@ -1,5 +1,5 @@
 # social-media-skeleton (**pipago**)
-<p align="left"> <img src="https://komarev.com/ghpvc/?username=fobybussocialmedia&label=Profile%20views&color=0e75b6&style=flat" alt="fobybus" /> </p>
+<p align="left"> <img src="https://komarev.com/ghpvc/?username=fobybussocialmedia&label=view%20count%20since%201.0.5&color=0e75b6&style=flat" alt="fobybus" /> </p>
 
 
 ![pipago logo](image/peepa.png)
