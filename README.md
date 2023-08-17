@@ -1,4 +1,7 @@
 # social-media-skeleton (**pipago**)
+<p align="left"> <img src="https://komarev.com/ghpvc/?username=fobybussocialmedia&label=Profile%20views&color=0e75b6&style=flat" alt="fobybus" /> </p>
+
+
 ![pipago logo](image/peepa.png)
 uncompleted social media project implemented using a php,mysql,css,javascript and html
 ## tasks 
