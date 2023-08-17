@@ -1,4 +1,4 @@
-<?php
+<?php   
 session_start();
 if(isset($_SESSION["id"]))
 {
@@ -39,7 +39,7 @@ if($result->num_rows>0)
   $upass=hashPass($upass,$salt);
   if($upass==$pas)
   {
-      //session start
+      //session start 
   $_SESSION['email']=$email;
   $_SESSION["id"]=$id;
   $_SESSION["fname"]=$fname;
@@ -51,6 +51,7 @@ if($result->num_rows>0)
   $_SESSION["edu"]=$edu;
   $_SESSION["joined"]=$joined;
   $_SESSION["salt"]=$salt;
+  $_SESSION["exp_time"]=time()+(10);
   ////////////////////////////
   //update last seen
   ////////////////////////////

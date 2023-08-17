@@ -1,12 +1,21 @@
 <!-- drop in and out of the PHP context -->
 <?php  
 include("atask/getinfo.php");
+include("../tasks/passw.php");
 session_start();
  if(!isset($_SESSION["aid"]))
  {
 	 header("location:adminlogin.html");
 	
  }
+
+ //is expired 
+if(sexpired())
+{
+   header("location:atask/logout.php");
+   exit();
+}
+
 ?> 
 
 <html lang="en-us">

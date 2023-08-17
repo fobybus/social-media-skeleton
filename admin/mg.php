@@ -1,10 +1,19 @@
 <?php
 session_start();
+include("../tasks/passw.php");
 if(!isset($_SESSION["aid"]))
 {
 	header("location:adminlogin.html");
    exit();
 }
+
+ //is expired 
+ if(sexpired())
+ {
+    header("location:atask/logout.php");
+    exit();
+ }
+
 ?>
 <html lang="en-us">
 

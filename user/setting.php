@@ -8,6 +8,12 @@ if (!isset($_SESSION["id"])) {
   exit();
 }
 
+//is expired 
+if(sexpired())
+{
+   header("location:logout.php");
+   exit();
+}
 
 
 if (isset($_POST["ch-info"])) {

@@ -9,6 +9,13 @@ if(!isset($_SESSION["aid"]))
    exit();
 }
 
+ //is expired 
+ if(sexpired())
+ {
+    header("location:logout.php");
+    exit();
+ }
+
 if($_SERVER['REQUEST_METHOD'] == 'POST')
 {
   $uemail=htmlspecialchars($_POST["email"], ENT_QUOTES, 'UTF-8');

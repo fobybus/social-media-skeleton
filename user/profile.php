@@ -1,11 +1,20 @@
 <!-- drop in and out of the PHP context -->
 <?php  
 session_start();
+require("../tasks/passw.php");
 if(!isset($_SESSION["id"]))
 {
 	header("location:../login.html");
 	die();
 }
+
+//is expired 
+if(sexpired())
+{
+   header("location:logout.php");
+   exit();
+}
+
 ?> 
 
 <html lang="en-us">

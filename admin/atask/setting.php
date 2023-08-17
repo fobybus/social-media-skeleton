@@ -8,6 +8,14 @@ if(!isset($_SESSION["aid"]))
 	header("location:../adminlogin.html");
    exit();
 }
+
+ //is expired 
+ if(sexpired())
+ {
+    header("location:logout.php");
+    exit();
+ }
+ 
 //connect to the database first!!!!
 require('../../tasks/condb.php');
 if($_SERVER['REQUEST_METHOD'] == 'POST')

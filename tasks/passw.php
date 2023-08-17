@@ -14,4 +14,13 @@ function hashPass($plain,$salt)
     return hash("sha256",$password);
 }
 
+//check se exp 
+function sexpired()
+{
+  if(isset($_SESSION["exp_time"]) && $_SESSION["exp_time"]<time())
+   return true; 
+   else 
+   return false;
+}
+
 ?>
