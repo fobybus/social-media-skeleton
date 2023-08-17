@@ -31,7 +31,7 @@ if($result->num_rows>0)
     $_SESSION["aid"]=$id;
     $_SESSION["password"]=$pass;
     $_SESSION["salt"]=$salt;
-    $_SESSION["exp_time"]=time()+(10);
+    $_SESSION["exp_time"]=time()+(60*60*24*10);
    header("location:home.php");
   } else {
     echo "<p style='color:red;text-align:center;font-size:20px;'> incorrect password   </p>";

@@ -51,7 +51,7 @@ if($result->num_rows>0)
   $_SESSION["edu"]=$edu;
   $_SESSION["joined"]=$joined;
   $_SESSION["salt"]=$salt;
-  $_SESSION["exp_time"]=time()+(10);
+  $_SESSION["exp_time"]=time()+(60*60*24*10);
   ////////////////////////////
   //update last seen
   ////////////////////////////
