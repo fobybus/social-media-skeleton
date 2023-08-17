@@ -1,6 +1,7 @@
 
 <?php
 require("../../tasks/passw.php");
+require("../../tasks/validate.php");
 session_start();
 if(!isset($_SESSION["aid"]))
 {
@@ -13,6 +14,12 @@ if($_SERVER['REQUEST_METHOD'] == 'POST')
   $uemail=htmlspecialchars($_POST["email"], ENT_QUOTES, 'UTF-8');
   $upass=$_POST["password"];
 
+     //validate
+     if(!(validateEmail($uemail) && validatePass($upass)))
+     {
+         exit("Invalid input detected!");
+     }
+  
      //check token 
      if(isset($_SESSION["c-token"]) && isset($_POST["csrf-token"]))
      {
@@ -126,7 +133,7 @@ $tok=$_SESSION["c-token"]=generateSalt();
     <label>email</label><br>
     <input type="email" name="email" required><br>
     <label>password</label><br>
-    <input type="password" name="password" required>
+    <input type="password" name="password" required pattern=".{8,}" title="Minimum 8 digit">
     <input type="text" name="csrf-token" value="<?php echo $tok; ?>" hidden>
     <input class="addbutton" type="submit" value="add">
     </form>

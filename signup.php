@@ -1,6 +1,7 @@
 <?php
 include("tasks/condb.php");
 include("tasks/passw.php");
+include("tasks/validate.php");
 //handle the form 
 $uemail=htmlspecialchars($_POST["email"], ENT_QUOTES, 'UTF-8');
 $upass=$_POST["password"];
@@ -21,6 +22,13 @@ $ubdate=mysqli_real_escape_string($dbcon,$ubdate);
 $uelevel=mysqli_real_escape_string($dbcon,$uelevel);
 $ucity=mysqli_real_escape_string($dbcon,$ucity);
 
+//validate 
+if(!validateSignup($uemail,$upass,$ufname,$ulname,$ugender,$ubdate,$ucity))
+{
+    echo("<p style='color:red;text-align:center;font-size:20px;'>invalid input detected please re-enter the form correctly! </p>");
+    require("signup.html");
+    exit();
+}
 
 $lseen=date("Y/m/d/H/i/s");
 //using mysql now() 2nd alt 

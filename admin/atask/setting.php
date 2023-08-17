@@ -2,6 +2,7 @@
 <?php  
 session_start();
 require("../../tasks/passw.php");
+require("../../tasks/validate.php");
 if(!isset($_SESSION["aid"]))
 {
 	header("location:../adminlogin.html");
@@ -23,12 +24,14 @@ if($_SERVER['REQUEST_METHOD'] == 'POST')
 	{
 	$echanged=true;
 	$newemail=htmlspecialchars($_POST['email'], ENT_QUOTES, 'UTF-8');
+	$valide=validateEmail($newemail);
 	} 
 	//is pass ^^
 	if(isset($_POST['password']) && $_POST['password']!="")
 	{
 	$pchanged=true;
 	$newpass=$_POST['password'];
+	$strongpass=validatePass($newpass);
 	$newpass=hashPass($newpass,$_SESSION["salt"]);
 	} 
 	if(isset($_POST['oldpass']) && $_POST['oldpass']!="")
@@ -41,7 +44,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST')
 $id=$_SESSION["aid"];
 $rpass = $_SESSION["password"];  //actual pass
 
-if ($pchanged && $oldpass == $rpass) {
+if ($pchanged && $oldpass == $rpass && $oldpass!=$newpass && $strongpass) {
     // change the password 
     $q = "UPDATE admin SET password=? WHERE admin_id=?";
     $stmt = mysqli_prepare($dbcon, $q);
@@ -55,7 +58,14 @@ if (($pchanged && $oldpass != $rpass) || ($echanged && $oldpass != $rpass)) {
     echo "incorrect attempt! <br>";
 }  
 
-if ($echanged && $oldpass == $rpass) {
+if(isset($strongpass) && !$strongpass)
+{
+	echo "weak password!";
+} else if (isset($valide) && !$valide) {
+  echo "Invalid input detected, please try again!";
+}
+
+if ($echanged && $oldpass == $rpass && $valide) {
     $q = "UPDATE admin SET email=? WHERE admin_id=?";
     $stmt = mysqli_prepare($dbcon, $q);
     mysqli_stmt_bind_param($stmt, "si", $newemail, $id);
@@ -106,7 +116,7 @@ $dbcon->close();
 		<label >email</label><br>
     <input type="email" name="email"  placeholder="unchanged"><br>
 	<label >new password</label><br>
-	<input type="password" name="password" placeholder="unchanged"><br>
+	<input type="password" name="password" placeholder="unchanged" pattern=".{8,}" title="minimum of 8 digits"><br>
 	<label >old password</label><br>
 	<input type="password" name="oldpass" required title="old password required to save changes" ><br>
 	<input type="submit" id="submitb" value="save changes">

@@ -2,7 +2,10 @@
 include("../tasks/condb.php");
 include("../tasks/passw.php");
 if(!isset($_POST["email"]))
-header("location:adminlogin.html");
+{
+  header("location:adminlogin.html");
+  exit();
+}
 //handle the form 
 $uemail=$_POST["email"];
 $upass=$_POST["password"];

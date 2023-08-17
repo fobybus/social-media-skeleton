@@ -3,12 +3,13 @@ session_start();
 if(isset($_SESSION["id"]))
 {
 	header("location:user/home.php");
+	exit();
 }
 
  if(isset($_SESSION["aid"]))
  {
 	 header("location:admin/home.php");
-	
+	 exit();
  }
 ?>
 

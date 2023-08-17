@@ -3,6 +3,7 @@ session_start();
 if(isset($_SESSION["id"]))
 {
 	header("location:user/home.php");
+  exit();
 }
 
 require("tasks/condb.php");

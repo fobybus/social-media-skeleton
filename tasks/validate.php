@@ -14,12 +14,12 @@ function validateText($text)
 
 function validateDate($date)
 {
-    echo boolval(strtotime($date));
+    return boolval(strtotime($date));
 }
 
 function validateGender($gender)
 {
-    if ($gender == "male" || $gender == "female")
+    if ($gender == "male" || $gender == "female" || $gender == "other")
         return true;
     else
         return false;
