@@ -19,4 +19,8 @@ uncompleted social media project implemented using a php,mysql,css,javascript an
 ```
 git clone https://github.com/fobybus/social-media-skeleton
 ```
+- use the following password for all users 
+```
+password123
+```
 <mark>contribute to the project 🙏</mark>
