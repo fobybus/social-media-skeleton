@@ -40,6 +40,7 @@ if($result->num_rows>0)
   if($upass==$pas)
   {
       //session start 
+  Session_regenerate_id();
   $_SESSION['email']=$email;
   $_SESSION["id"]=$id;
   $_SESSION["fname"]=$fname;
